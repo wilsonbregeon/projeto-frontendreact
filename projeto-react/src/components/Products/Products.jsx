@@ -1,38 +1,44 @@
-import { Article, Section, Main } from "./styled";
+import CardProducts from "./CardProducts"
+import { Article, Section, Main, Img, P } from "./styled"
 
+function Products(props) {
+    const { cart, setCart, products } = props
 
-function Products() {
+    function buy(id) {
+        const i = cart.findIndex((item) => item.id === id)
+        if (i !== -1) {
+            const newCart = [...cart]
+            newCart[i] = {
+                ...newCart[i],
+                amount: newCart[i].amount + 1
+            }
+            setCart(newCart)
+        } else {
+            const searchProduct = products.find((product) => product.id === id)
+            const newProduct = { ...searchProduct, amount: 1 }
+            const newList = [...cart, newProduct]
+            setCart(newList)
+        }
+    }
+
     return (
         <Main>
-            <p>Quantidade de produtos:</p>
+            <P>Quantidade de produtos:</P>
 
             <Section>
                 <Article>
-                    <img className="img" src="https://picsum.photos/200/300" />
-                    <p>Produto 1</p>
-                    <p><button>Adicionar no carrinho</button></p>
-                </Article>
-                
-                <Article>
-                    <img className="img" src="https://picsum.photos/200/300" />
-                    <p>Produto 2</p>
-                    <p><button>Adicionar no carrinho</button></p>
-                </Article>
-
-                <Article>
-                    <img className="img" src="https://picsum.photos/200/300" />
-                    <p>Produto 3</p>
-                    <p><button>Adicionar no carrinho</button></p>
-                </Article>
-
-                <Article>
-                    <img className="img" src="https://picsum.photos/200/300" />
-                    <p>Produto 4</p>
-                    <p><button>Adicionar no carrinho</button></p>
+                    {products.map((product) => {
+                        return <CardProducts 
+                        
+                        product={product} 
+                        key={product.id} 
+                        buy={buy} 
+                        />
+                    })}
                 </Article>
             </Section>
         </Main>
-    );
-};
+    )
+}
 
-export default Products;
+export default Products
