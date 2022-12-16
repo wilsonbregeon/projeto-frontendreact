@@ -2,27 +2,27 @@
     "productsList": [
         {
             "id": 1,
-            "name": "Produto 1",
+            "name": "A Produto 1",
             "url": "https://picsum.photos/200/300",
             "price": 50
         },
         {
             "id": 2,
-            "name": "Produto 2",
+            "name": "B Produto 2",
             "url": "https://picsum.photos/200/300",
             "price": 35
         },
         {
             "id": 3,
-            "name": "Produto 3",
+            "name": "C Produto 3",
             "url": "https://picsum.photos/200/300",
             "price": 20
         },
         {
             "id": 4,
-            "name": "Produto 4",
+            "name": "D Produto 4",
             "url": "https://picsum.photos/200/300",
             "price": 15
-        }
+        } 
     ]
 }
