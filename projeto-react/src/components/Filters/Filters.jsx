@@ -1,66 +1,50 @@
-import { useState } from 'react'
-import { useForm } from "../../hooks/useForm"
 import { Button, Form, Label, Main } from './styled';
 
-function Filters() {
-
-    const [formulario, onChange] = useForm({
-        minValue: "",
-        maxValue: "",
-        searchProduct: ""
-    });
-
-    const handleClick = (event) => {
-        event.preventDefault();
-        console.log(formulario)
-    };
-    
+function Filters(props) {
 
     return (
         <Main>
+
             <h2>Filtros de busca</h2>
+            <input
+                placeholder='Pesquisar produto'
+                value={props.query}
+                onChange={(e) => { props.setQuery(e.target.value) }}
+            />
 
-            <Form onSubmit={handleClick}>
-                 <p><label htmlFor="minValue">Valor mínimo:</label></p>
-                <input
-                    name="minValue"
-                    id="minValue"
-                    value={formulario.minValue}
-                    onChange={onChange}
-                    type="number"
-                >
-                </input>
+            <input
+                placeholder='Preço Mínimo'
+                value={props.minPrice}
+                onChange={(e) => { props.setMinPrice(e.target.value) }}
+                type="number"
+            />
 
-                <p><label htmlFor="maxValue">Valor máximo:</label></p> 
-                <input
-                    name="maxValue"
-                    id="maxValue"
-                    value={formulario.maxValue}
-                    onChange={onChange}
-                    type="number"
-                />
+            <input
+                placeholder='Preço Máximo'
+                value={props.maxPrice}
+                onChange={(e) => { props.setMaxPrice(e.target.value) }}
+                type="number"
+            />
 
-                <p><label htmlFor="searchProduct">Buscar produto:</label></p> 
-                <input
-                    name="searchProduct"
-                    id="searchProduct"
-                    value={formulario.searchProduct}
-                    onChange={onChange}
-                    type="text"
-                />
+            <label for="sortingParameter">Ordenar por: </label>
+            <select
+                value={props.sortingParameter}
+                onChange={(e) => { props.setSortingParameter(e.target.value) }}
+            >
+                <option value="title">Título</option>
+                <option value="price">Preço</option>
+            </select>
 
-                <p><Label htmlFor="ordenation">Ordenação:</Label></p> 
-                <select name="" id="ordenation">
-                    <option value="crescent">Crescente</option>
-                    <option value="decrescent">Decrescente</option>
-                </select>
+            <select
+                value={props.order}
+                onChange={(e) => { props.setOrder(e.target.value) }}
+            >
+                <option value="asc">Crescente</option>
+                <option value="desc">Decrescente</option>
+            </select>
 
-                <Button type="submit">Buscar</Button>
-            </Form>
         </Main>
-        
-    );
-
+    )
 }
 
-export default Filters;
+export default Filters
