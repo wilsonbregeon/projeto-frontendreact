@@ -1,5 +1,5 @@
 import CardProducts from "./CardProducts"
-import { Article, Section, Main, Img, P } from "./styled"
+import { ArticleProducts, Section, Main, Img, P } from "./styled"
 
 function Products(props) {
     const { cart, setCart, products } = props
@@ -23,19 +23,16 @@ function Products(props) {
 
     return (
         <Main>
-            <P>Quantidade de produtos:</P>
-
             <Section>
-                <Article>
+                <ArticleProducts>
                     {products.map((product) => {
                         return <CardProducts 
-                        
                         product={product} 
                         key={product.id} 
                         buy={buy} 
                         />
                     })}
-                </Article>
+                </ArticleProducts>
             </Section>
         </Main>
     )

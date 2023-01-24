@@ -1,6 +1,4 @@
-import Products from "../Products/Products"
 import { MainCartCard, Img, ButtonCardCart} from "./styled"
-
 
 function CartCard({
     id,

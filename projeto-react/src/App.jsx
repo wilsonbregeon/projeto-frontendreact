@@ -31,7 +31,7 @@ function App() {
   const filteredProducts = useMemo(() => {
     return products
       .filter((product) => {
-        return product.name.includes(query)
+        return product.name.toLowerCase().includes(query.toLowerCase())
       })
       .filter((product) => {
         return product.price >= minPrice || minPrice === ""
@@ -52,7 +52,7 @@ function App() {
           return -1
         }
       })
-  }, [products, query, minPrice, maxPrice, sortingParameter])
+  }, [products, query, minPrice, maxPrice, sortingParameter, order])
 
   switch (screen) {
     case 1:

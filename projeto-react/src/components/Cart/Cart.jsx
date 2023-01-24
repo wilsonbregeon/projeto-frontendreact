@@ -28,9 +28,8 @@ function Cart(props) {
     return (
 
         <MainCart>
-            <p>Carrinho:</p>
-            <p>Valor total: <strong>R$ {totalPrice}</strong></p>
-            <Button onClick={props.onClick}>Ir para carrinho</Button>
+            <h2>Carrinho:</h2>
+             
             {cart.map((product) => {
                 return (
                     <CartCard
@@ -43,6 +42,8 @@ function Cart(props) {
                     />
                 )
             })}
+            <p>Valor total: <strong>R$ {totalPrice}</strong></p>
+            <Button onClick={props.onClick}>Ir para carrinho</Button>
         </MainCart>
     )
 }

@@ -13,5 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 export const MainApp = styled.main`
     display: flex;
     justify-content: space-evenly;
+    background-color: aliceblue;
+    height: 160vh;
 `
 
